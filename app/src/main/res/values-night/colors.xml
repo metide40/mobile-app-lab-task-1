@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="purple_primary">#AB47BC</color>
+    <color name="purple_dark">#4A148C</color>
+    <color name="blue_title">#90CAF9</color>
+    <color name="gray_button">#616161</color>
+    <color name="light_gray">#121212</color>
+    <color name="white">#FFFFFF</color>
+    <color name="black">#EEEEEE</color>
+    <color name="hint_gray">#AAAAAA</color>
+
+    <!-- Theme-adaptive semantic colors -->
+    <color name="card_bg">#1E1E1E</color>
+    <color name="screen_bg">#121212</color>
+    <color name="text_primary">#EEEEEE</color>
+    <color name="text_secondary">#AAAAAA</color>
+    <color name="edit_text_bg">#2A2A2A</color>
+    <color name="edit_text_stroke">#444444</color>
+    <color name="circle_bg">#333333</color>
+</resources>

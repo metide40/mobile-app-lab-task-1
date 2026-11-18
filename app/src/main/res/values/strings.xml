@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Lab_exercises</string>
+    <string name="profile_photo">Profile Photo</string>
+    <string name="close">Close</string>
+    <string name="change_photo">Change Photo</string>
+    <string name="reset_to_default">Reset to Default</string>
+</resources>
