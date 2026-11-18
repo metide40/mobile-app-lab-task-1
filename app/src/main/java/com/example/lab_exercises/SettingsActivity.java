@@ -38,6 +38,7 @@ public class SettingsActivity extends AppCompatActivity {
     private static final String KEY_LANGUAGE = "language";
     private static final String KEY_STATUS = "status";
 
+    private ImageButton btnBack;
     private ImageView ivProfile;
     private View layoutProfile;
     private TextView tvName, tvEmail;
@@ -57,6 +58,12 @@ public class SettingsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_settings);
 
         prefs = getSharedPreferences(LabApplication.PREFS_NAME, MODE_PRIVATE);
+
+        // Back button
+        btnBack = findViewById(R.id.btnBack);
+        if (btnBack != null) {
+            btnBack.setOnClickListener(v -> getOnBackPressedDispatcher().onBackPressed());
+        }
 
         // Register image picker contract
         pickImageLauncher = registerForActivityResult(
