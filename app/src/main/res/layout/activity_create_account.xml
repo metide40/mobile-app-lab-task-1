@@ -70,6 +70,7 @@
 
             <!-- Full name -->
             <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilFullName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Full name"
@@ -84,6 +85,7 @@
 
             <!-- Email -->
             <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilEmail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
@@ -99,6 +101,7 @@
 
             <!-- Age -->
             <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilAge"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
@@ -114,6 +117,7 @@
 
             <!-- Password -->
             <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilPassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
