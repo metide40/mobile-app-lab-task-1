@@ -93,12 +93,14 @@ public class SettingsActivity extends AppCompatActivity {
         } else {
             String userName = getIntent().getStringExtra("USER_NAME");
             String userEmail = getIntent().getStringExtra("USER_EMAIL");
-            if (userName != null && !userName.isEmpty()) {
-                tvName.setText(userName);
+            if (userName == null || userName.isEmpty()) {
+                userName = prefs.getString(LabApplication.KEY_USER_NAME, "Olie");
             }
-            if (userEmail != null && !userEmail.isEmpty()) {
-                tvEmail.setText(userEmail);
+            if (userEmail == null || userEmail.isEmpty()) {
+                userEmail = prefs.getString(LabApplication.KEY_USER_EMAIL, "oli@gmail.com");
             }
+            tvName.setText(userName);
+            tvEmail.setText(userEmail);
         }
 
         // Settings views

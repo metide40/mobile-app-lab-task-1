@@ -8,6 +8,11 @@ public class LabApplication extends Application {
 
     public static final String PREFS_NAME = "settings_prefs";
     public static final String KEY_DARK_MODE = "dark_mode";
+    public static final String KEY_USER_NAME = "user_name";
+    public static final String KEY_USER_EMAIL = "user_email";
+    public static final String KEY_USER_PASSWORD = "user_password";
+    public static final String KEY_IS_LOGGED_IN = "is_logged_in";
+    public static final String KEY_REMEMBER_LOGIN = "remember";
 
     @Override
     public void onCreate() {

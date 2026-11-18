@@ -1,6 +1,7 @@
 package com.example.lab_exercises;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -8,6 +9,7 @@ import android.util.Patterns;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.RadioGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -20,8 +22,9 @@ public class CreateAccountActivity extends AppCompatActivity {
     private TextInputLayout tilFullName, tilEmail, tilAge, tilPassword;
     private TextInputEditText etFullName, etEmail, etAge, etPassword;
     private RadioGroup rgGender;
-    private CheckBox cbNews, cbTerms;
+    private CheckBox cbTerms;
     private Button btnRegister;
+    private TextView tvGoToLogin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,17 +43,25 @@ public class CreateAccountActivity extends AppCompatActivity {
         etAge = findViewById(R.id.etAge);
         etPassword = findViewById(R.id.etPassword);
 
-        // Find other input views
+        // Find other views
         rgGender = findViewById(R.id.rgGender);
-        cbNews = findViewById(R.id.cbNews);
         cbTerms = findViewById(R.id.cbTerms);
         btnRegister = findViewById(R.id.btnRegister);
+        tvGoToLogin = findViewById(R.id.tvGoToLogin);
 
         // Automatically clear validation errors when user types
         setupErrorClearing();
 
         // Register button click
         btnRegister.setOnClickListener(v -> validateAndRegister());
+
+        // Already have an account? Go to Login
+        if (tvGoToLogin != null) {
+            tvGoToLogin.setOnClickListener(v -> {
+                startActivity(new Intent(CreateAccountActivity.this, LoginActivity.class));
+                finish();
+            });
+        }
     }
 
     private void setupErrorClearing() {
@@ -158,13 +169,20 @@ public class CreateAccountActivity extends AppCompatActivity {
             return;
         }
 
-        // Success message
-        Toast.makeText(this, "Account created successfully!", Toast.LENGTH_SHORT).show();
+        // Save registered user credentials
+        SharedPreferences prefs = getSharedPreferences(LabApplication.PREFS_NAME, MODE_PRIVATE);
+        prefs.edit()
+                .putString(LabApplication.KEY_USER_NAME, name)
+                .putString(LabApplication.KEY_USER_EMAIL, email)
+                .putString(LabApplication.KEY_USER_PASSWORD, password)
+                .apply();
 
-        // Navigate to Settings screen with verified user info
-        Intent intent = new Intent(CreateAccountActivity.this, SettingsActivity.class);
-        intent.putExtra("USER_NAME", name);
-        intent.putExtra("USER_EMAIL", email);
+        // Success message
+        Toast.makeText(this, "Account created! Please log in.", Toast.LENGTH_SHORT).show();
+
+        // Navigate to LoginActivity (not directly to Settings)
+        Intent intent = new Intent(CreateAccountActivity.this, LoginActivity.class);
+        intent.putExtra("REGISTERED_EMAIL", email);
         startActivity(intent);
         finish(); // Close CreateAccount screen
     }
