@@ -1,6 +1,7 @@
 package com.example.lab_exercises;
 
 import android.app.Dialog;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -38,7 +39,7 @@ public class SettingsActivity extends AppCompatActivity {
     private static final String KEY_LANGUAGE = "language";
     private static final String KEY_STATUS = "status";
 
-    private ImageButton btnBack;
+    private Button btnLogout;
     private ImageView ivProfile;
     private View layoutProfile;
     private TextView tvName, tvEmail;
@@ -59,10 +60,10 @@ public class SettingsActivity extends AppCompatActivity {
 
         prefs = getSharedPreferences(LabApplication.PREFS_NAME, MODE_PRIVATE);
 
-        // Back button
-        btnBack = findViewById(R.id.btnBack);
-        if (btnBack != null) {
-            btnBack.setOnClickListener(v -> getOnBackPressedDispatcher().onBackPressed());
+        // Logout button
+        btnLogout = findViewById(R.id.btnLogout);
+        if (btnLogout != null) {
+            btnLogout.setOnClickListener(v -> performLogout());
         }
 
         // Register image picker contract
@@ -207,6 +208,22 @@ public class SettingsActivity extends AppCompatActivity {
 
             Toast.makeText(this, "Reset to default", Toast.LENGTH_SHORT).show();
         });
+    }
+
+    /**
+     * Clears login session state and navigates back to Create Account (Register) page.
+     */
+    private void performLogout() {
+        prefs.edit()
+                .putBoolean(LabApplication.KEY_IS_LOGGED_IN, false)
+                .apply();
+
+        Toast.makeText(this, "Logged out", Toast.LENGTH_SHORT).show();
+
+        Intent intent = new Intent(SettingsActivity.this, CreateAccountActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
+        finish();
     }
 
     @Override

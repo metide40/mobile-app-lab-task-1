@@ -11,33 +11,35 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <!-- Top purple bar with Back button -->
+        <!-- Top purple bar with Logout button -->
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="56dp"
             android:background="@color/purple_primary"
-            android:paddingStart="8dp"
-            android:paddingEnd="16dp">
-
-            <ImageButton
-                android:id="@+id/btnBack"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                android:layout_centerVertical="true"
-                android:background="?attr/selectableItemBackgroundBorderless"
-                android:src="@android:drawable/ic_menu_revert"
-                android:contentDescription="@string/back"
-                app:tint="@color/white" />
+            android:paddingStart="16dp"
+            android:paddingEnd="12dp">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_toEndOf="@id/btnBack"
                 android:layout_centerVertical="true"
-                android:layout_marginStart="8dp"
                 android:text="My Application"
                 android:textColor="@color/white"
                 android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/btnLogout"
+                android:layout_width="wrap_content"
+                android:layout_height="36dp"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:backgroundTint="#8E24AA"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp"
+                android:text="@string/logout"
+                android:textColor="@color/white"
+                android:textSize="12sp"
                 android:textStyle="bold" />
         </RelativeLayout>
 
